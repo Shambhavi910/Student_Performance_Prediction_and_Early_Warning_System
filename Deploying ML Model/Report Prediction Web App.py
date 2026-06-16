@@ -5,12 +5,20 @@ Created on Sun Dec 28 21:41:39 2025
 @author: SHAMBHAVI ROY
 """
 
+import os
+
 import numpy as np
 import pickle
 import  streamlit as st
+import pickle
 
-#loading the trained model
-loaded_model = pickle.load(open("C:/Users/SHAMBHAVI ROY/OneDrive/Desktop/Student's Report/trained_model.sav",'rb'))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "trained_model.sav")
+
+with open(MODEL_PATH, "rb") as file:
+    loaded_model = pickle.load(file)
+# #loading the trained model
+# loaded_model = pickle.load(open("C:/Users/SHAMBHAVI ROY/OneDrive/Desktop/Student's Report/trained_model.sav",'rb'))
 
 loaded_rf = loaded_model['rf_regressor']
 loaded_clf = loaded_model['classifier']
