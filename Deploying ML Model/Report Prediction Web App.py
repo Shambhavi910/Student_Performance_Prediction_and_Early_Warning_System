@@ -13,7 +13,14 @@ import  streamlit as st
 import pickle
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "trained_model.sav")
+
+MODEL_PATH = os.path.abspath(
+    os.path.join(BASE_DIR, "..", "trained_model.sav")
+)
+
+print("BASE_DIR =", BASE_DIR)
+print("MODEL_PATH =", MODEL_PATH)
+print("EXISTS =", os.path.exists(MODEL_PATH))
 
 with open(MODEL_PATH, "rb") as file:
     loaded_model = pickle.load(file)
