@@ -16,9 +16,25 @@ MODEL_PATH = os.path.abspath(
     os.path.join(BASE_DIR, "..", "trained_model.sav")
 )
 
+import os
+import pickle
+import os
+
+with open("trained_model.sav", "rb") as f:
+    obj = pickle.load(f)
+
+print(type(obj))
+print(obj.keys())
+print(os.path.getsize("trained_model.sav") / (1024**2), "MB")
+
 print("BASE_DIR =", BASE_DIR)
 print("MODEL_PATH =", MODEL_PATH)
-print("EXISTS =", os.path.exists(MODEL_PATH))
+print("MODEL EXISTS =", os.path.exists(MODEL_PATH))
+
+root_dir = os.path.abspath(os.path.join(BASE_DIR, ".."))
+print("ROOT DIR =", root_dir)
+print("ROOT FILES =", os.listdir(root_dir))
+print("CURRENT FILES =", os.listdir(BASE_DIR))
 
 with open(MODEL_PATH, "rb") as file:
     loaded_model = pickle.load(file)
